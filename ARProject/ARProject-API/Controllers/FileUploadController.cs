@@ -11,5 +11,10 @@ namespace ARProject_API.Controllers
     [ApiController]
     public class FileUploadController : ControllerBase
     {
+        public FileUploadController()
+        {
+
+        }
+
     }
 }
