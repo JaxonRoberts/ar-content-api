@@ -23,8 +23,7 @@ namespace ARProject_Mobile
         protected override void OnStart()
         {
             AppCenter.Start("android=f276defd-1aae-4fda-87c6-2e0b27397132;" +
-                "uwp={Your UWP App secret here};" +
-                "ios={Your iOS App secret here}",
+                "ios=302dcb48-b399-4bdd-adf1-6a450f0ee0f2",
                 typeof(Analytics), typeof(Crashes));
         }
 
