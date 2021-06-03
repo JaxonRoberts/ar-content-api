@@ -32,5 +32,8 @@ jobs:
       run: mkdir dockerout
       working-directory: ./ARProject/ARProject-API
     - name: Docker build
-      run: docker build -f "Dockerfile" --force-rm -t arprojectapi:dev --target base  --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=ARProject-API" "./dockerout"
+      run: docker build -f "Dockerfile" --force-rm -t arprojectapi:dev --target base --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=ARProject-API" "./dockerout"
       working-directory: ./ARProject/ARProject-API
+    - name: ListDocker
+      run: ls -la
+      working-directory: ./ARProject/ARProject-API/dockerout
