@@ -35,3 +35,9 @@ jobs:
     - name: Docker build
       run: docker build -f "Dockerfile" --force-rm -t arprojectapi:dev --target base --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=ARProject-API" "./dockerout"
       working-directory: ./ARProject/ARProject-API
+    - name: Docker Image to ACR
+    - uses: azure/docker-login@v1
+      with:
+        login-server: 'containerregistryarprojectdev.azurecr.io'
+        username: 'containerregistrydevarproject'
+        password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
