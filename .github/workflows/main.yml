@@ -1,62 +1,63 @@
-name: App Center
-
-# You may pin to the exact commit or the version.
-# uses: wzieba/AppCenter-Github-Action@8db6b765c4d7ce337bd783ea986f17ce0c9a9e85
-uses: wzieba/AppCenter-Github-Action@v1.3.2
-with:
-  # App name followed by username e.g. wzieba/Sample-App
-  appName: 
-  # Upload token - you can get one from appcenter.ms/settings
-  token: 
-  # Distribution group
-  group: 
-  # Artefact to upload (.apk or .ipa)
-  file: 
-  # Build version parameter required for .zip, .msi, .pkg and .dmg files
-  buildVersion: # optional
-  # Build number parameter required for macOS .pkg and .dmg files
-  buildNumber: # optional
-  # Release notes visible on release page
-  releaseNotes: # optional
-  # Generate release notes based on the latest git commit
-  gitReleaseNotes: # optional
-  # If true, send an email notification to the distribution group
-  notifyTesters: # optional
-  # If true, shows additional information from the action execution
-  debug: # optional
-
 # This is a basic workflow to help you get started with Actions
-#name: CI
+name: CI
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  #pull_request:
+    #branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   #workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-#jobs:
+jobs:
   # This workflow contains a single job called "build"
-  #build:
+  build:
     # The type of runner that the job will run on
-    #runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    #steps:
+    steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      #- uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-        #name: Run a one-line script
-        #run: echo Hello, world!
+        name: Run a one-line script
+        run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
       #- name: Run a multi-line script
         #run: |
           #echo Add other actions to build,
           #echo test, and deploy your project.
+
+
+#name: App Center
+
+# You may pin to the exact commit or the version.
+# uses: wzieba/AppCenter-Github-Action@8db6b765c4d7ce337bd783ea986f17ce0c9a9e85
+#uses: wzieba/AppCenter-Github-Action@v1.3.2
+#with:
+  # App name followed by username e.g. wzieba/Sample-App
+  #appName: 
+  # Upload token - you can get one from appcenter.ms/settings
+  #token: 
+  # Distribution group
+  #group: 
+  # Artefact to upload (.apk or .ipa)
+  #file: 
+  # Build version parameter required for .zip, .msi, .pkg and .dmg files
+  #buildVersion: # optional
+  # Build number parameter required for macOS .pkg and .dmg files
+  #buildNumber: # optional
+  # Release notes visible on release page
+  #releaseNotes: # optional
+  # Generate release notes based on the latest git commit
+  #gitReleaseNotes: # optional
+  # If true, send an email notification to the distribution group
+  #notifyTesters: # optional
+  # If true, shows additional information from the action execution
+  #debug: # optional
