@@ -27,25 +27,21 @@ jobs:
       #uses: actions/setup-dotnet@v1
       #with:
         #dotnet-version: 3.1.101
-        
       steps:
       - task: UseDotNet@2
       displayName: 'Use .NET Core 3.x sdk'
       inputs:
         packageType: sdk
         version: 3.1.402
-        installationPath: $(Agent.ToolsDirectory)/dotnet
-        
+        installationPath: $(Agent.ToolsDirectory)/dotnet        
       # Runs a single command using the runners shell
         #name: EchoScript
         #run: echo Hello, world!
-
       # Runs a set of commands using the runners shell
       #- name: Run a multi-line script
         #run: |
           #echo Add other actions to build,
           #echo test, and deploy your project.
-
 
 #name: App Center
 
