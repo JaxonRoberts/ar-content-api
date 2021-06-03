@@ -19,11 +19,12 @@ jobs:
         dotnet-version: 3.1.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./ARProject
+      working-directory: ./ARProject/ARProject-API
     - name: List
       run: ls -la
     - name: Build
-      run: dotnet build ARProject.sln
-      working-directory: ./ARProject
+      run: dotnet build ARProject-API.csproj --no-restore
+      working-directory: ./ARProject/ARProject-API
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: ./ARProject/ARProject-API
