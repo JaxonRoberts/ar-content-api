@@ -23,7 +23,19 @@ jobs:
     #steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       #uses: actions/checkout@v2
-
+      #name: Setup .NET Core
+      #uses: actions/setup-dotnet@v1
+      #with:
+        #dotnet-version: 3.1.101
+        
+      steps:
+      - task: UseDotNet@2
+      displayName: 'Use .NET Core 3.x sdk'
+      inputs:
+        packageType: sdk
+        version: 3.1.402
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+        
       # Runs a single command using the runners shell
         #name: EchoScript
         #run: echo Hello, world!
