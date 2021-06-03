@@ -218,3 +218,8 @@ _Pvt_Extensions
 # LightSwitch generated files
 GeneratedArtifacts/
 ModelManifest.xml
+
+# Terraform generated files
+Terraform/.terraform.lock.hcl
+Terraform/arproject.tfvars
+Terraform/.terraform/
