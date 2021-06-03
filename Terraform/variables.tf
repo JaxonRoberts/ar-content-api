@@ -1,5 +1,5 @@
 variable "SUBS_FUSIONMETRIC_ID" {
-  default = "eadd4782-2c6d-4464-9102-9c008db02e3f"
+  default = "5619d596-a956-4293-ade9-2f4f0ee340de"
 }
 
 variable "location" {
@@ -16,10 +16,6 @@ variable "tags" {
     "Environment" = "dev"
     "Location"    = "South Central US"
   }
-}
-
-variable "resource_group" {
-  description = "The Resource group name"
 }
 
 variable "sql_server_userid" {
