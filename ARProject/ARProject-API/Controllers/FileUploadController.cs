@@ -26,7 +26,6 @@ namespace ARProject_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post()
         {
-            dude
             try
             {
                 var httpRequest = HttpContext.Request;
