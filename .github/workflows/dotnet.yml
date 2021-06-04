@@ -37,8 +37,9 @@ jobs:
         login-server: 'containerregistryarprojectdev.azurecr.io'
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
-    - name: Docker build and push
-      run: |
-        docker build . -t containerregistryarprojectdev.azurecr.io/arprojectapi:${{ github.sha }}
-        docker push containerregistryarprojectdev.azurecr.io/arprojectapi:${{ github.sha }}
+    - name: Docker build
+      run: docker build . -t containerregistryarprojectdev.azurecr.io/arprojectapi:${{ github.sha }}
+      working-directory: ./ARProject/ARProject-API
+    - name: Docker push
+      run: docker push containerregistryarprojectdev.azurecr.io/arprojectapi:${{ github.sha }}
       working-directory: ./ARProject/ARProject-API
