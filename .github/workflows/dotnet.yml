@@ -37,6 +37,6 @@ jobs:
         login-server: 'containerregistryarprojectdev.azurecr.io'
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
-    - name: Docker build
+    - name: Docker build 2
       run: docker build .
       working-directory: ./ARProject/ARProject-API
