@@ -12,7 +12,7 @@ variable "tags" {
   type = map
   default = {
     "Application" = "ARProject"
-    "created_by"  = "chris.palmer"
+    "CreatedBy"  = "chris.palmer"
     "Environment" = "dev"
     "Location"    = "South Central US"
   }
