@@ -38,5 +38,5 @@ jobs:
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
     - name: Docker build 2
-      run: docker build .
+      run: docker build . -f "Dockerfile"
       working-directory: ./ARProject/ARProject-API
