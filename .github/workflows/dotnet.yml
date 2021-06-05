@@ -39,4 +39,4 @@ jobs:
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
     - name: Docker push
-      run: docker push containerregistryarprojectdev.azurecr.io/arprojectapi:${{ github.sha }}
+      run: docker push containerregistryarprojectdev.azurecr.io/arprojectapi:latest{{ github.sha }}
