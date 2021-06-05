@@ -20,9 +20,6 @@ jobs:
     - name: Restore Dependencies
       run: dotnet restore
       working-directory: ./ARProject/ARProject-API
-    - name: List Folder
-      run: ls -la
-      working-directory: ./ARProject/ARProject-API
     - name: Build API Project
       run: dotnet build ARProject-API.csproj --no-restore
       working-directory: ./ARProject/ARProject-API
@@ -37,7 +34,8 @@ jobs:
         login-server: 'containerregistryarprojectdev.azurecr.io'
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
+    - name: List Folder
+      run: ls -la
     - name: Docker build
       run: docker build ARProject-API.csproj --tag latest
       docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t arprojectapi:dev --target base "./ARProject"
-      working-directory: ./ARProject/ARProject-API
