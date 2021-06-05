@@ -38,5 +38,7 @@ jobs:
       run: ls -la
     - name: Docker build
       run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "arprojectapi:latest" --target base "./ARProject"
+    - name: Docker login
+      run: docker login containerregistryarprojectdev.azurecr.io -u containerregistrydevarproject -p =d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7
     - name: Docker push
       run: docker push containerregistryarprojectdev.azurecr.io/arprojectapi
