@@ -32,15 +32,12 @@ jobs:
     - name: Make dockerout folder
       run: mkdir dockerout
       working-directory: ./ARProject/ARProject-API
-    - name: Change Folder 1
-      run: cd ARProject
-    - name: List Folder 2
-      run: ls -la
     - uses: azure/docker-login@v1
       with:
         login-server: 'containerregistryarprojectdev.azurecr.io'
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
     - name: Docker build
-      run: docker build ./ARProject/ARProject-API/ARProject-API.csproj --tag latest
+      run: docker build ARProject-API.csproj --tag latest
+      docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t arprojectapi:dev --target base "./ARProject"
       working-directory: ./ARProject/ARProject-API
