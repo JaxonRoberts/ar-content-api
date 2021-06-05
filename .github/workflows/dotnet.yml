@@ -32,6 +32,8 @@ jobs:
     - name: Make dockerout folder
       run: mkdir dockerout
       working-directory: ./ARProject/ARProject-API
+    - name: List Folder 2
+      run: ls -la
     - uses: azure/docker-login@v1
       with:
         login-server: 'containerregistryarprojectdev.azurecr.io'
