@@ -34,8 +34,8 @@ jobs:
       working-directory: ./ARProject/ARProject-API
     - name: Change Folder 1
       run: cd ARProject
-    - name: Change Folder 2
-      run: cd ARProject-API
+    - name: List Folder 2
+      run: ls -la
     - uses: azure/docker-login@v1
       with:
         login-server: 'containerregistryarprojectdev.azurecr.io'
