@@ -37,5 +37,4 @@ jobs:
     - name: List Folder
       run: ls -la
     - name: Docker build
-      run: docker build ARProject-API.csproj --tag latest
-      docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t arprojectapi:dev --target base "./ARProject"
+      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "arprojectapi:dev" --target base "./ARProject"
