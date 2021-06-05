@@ -32,9 +32,11 @@ jobs:
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
     - name: Make dockerout folder
-      run: mkdir dockerout
-      working-directory: ./ARProject/ARProject-API
-    - name: List Folder
-      run: ls -la
+      #run: mkdir dockerout
+      #working-directory: ./ARProject/ARProject-API
+    - #name: List Folder
+      #run: ls -la
     - name: Docker build
       run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "arprojectapi:latest" --target base "./ARProject"
+    - name: Docker push
+      run: docker push containerregistryarprojectdev.azurecr.io/arprojectapi
