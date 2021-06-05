@@ -32,7 +32,7 @@ jobs:
     - name: List Folder
       run: ls -la
     - name: Docker build
-      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "arprojectapi:latest" --target base "./ARProject"
+      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
     - name: Docker login
       run: docker login containerregistryarprojectdev.azurecr.io -u containerregistryarprojectdev -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
     - name: Docker push
