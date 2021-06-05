@@ -26,15 +26,15 @@ jobs:
     - name: Run API Tests
       run: dotnet test --no-build --verbosity normal
       working-directory: ./ARProject/ARProject-API
-    - name: Make dockerout folder
-      run: mkdir dockerout
-      working-directory: ./ARProject/ARProject-API
     - uses: azure/docker-login@v1
       with:
         login-server: 'containerregistryarprojectdev.azurecr.io'
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
+    - name: Make dockerout folder
+      run: mkdir dockerout
+      working-directory: ./ARProject/ARProject-API
     - name: List Folder
       run: ls -la
     - name: Docker build
-      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "arprojectapi:dev" --target base "./ARProject"
+      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "arprojectapi:latest" --target base "./ARProject"
