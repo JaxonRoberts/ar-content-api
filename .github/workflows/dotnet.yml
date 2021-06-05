@@ -38,5 +38,5 @@ jobs:
         username: 'containerregistrydevarproject'
         password: '=d/cPpwE/lUHnpqt=PDYW1AsnoMKDRG7'
     - name: Docker build
-      run: docker build . --tag latest
+      run: docker build ./ARProject/ARProject-API/ARProject-API.csproj --tag latest
       working-directory: ./ARProject/ARProject-API
