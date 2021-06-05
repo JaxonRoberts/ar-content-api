@@ -30,7 +30,7 @@ jobs:
       uses: Azure/get-keyvault-secrets@v1.0
       id: FetchSecrets
       with:
-        keyvault: ${{ "https://keyvaultarprojectdev.vault.azure.net/" }}
+        keyvault: "https://keyvaultarprojectdev.vault.azure.net/"
         secrets: '*'
     - name: Docker build
       run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
