@@ -202,29 +202,27 @@ resource "azurerm_container_registry" "dev" {
   tags = var.tags
 }
 
-/*
 # =====================================================================
 # ARProject Azure Container Group / Container Instance (ACI)
 # =====================================================================
 resource "azurerm_container_group" "dev" {
-  dns_name_label      = "aci-dev-modpims-sandbox"
+  dns_name_label      = "aci-arproject-dev"
 
   image_registry_credential {
       password = azurerm_key_vault_secret.container_passwd.value
-      server   = "containerregistrydevmodpimssandbox.azurecr.io"
+      server   = "containerregistryarprojectdev.azurecr.io"
       username = azurerm_key_vault_secret.container_userid.value
   }
 
   ip_address_type     = "public"
   location            = var.location
-  name                = "acg-dev-modpims-sandbox"
-  #network_profile_id  = azurerm_network_profile.dev.id
+  name                = "acg-arproject-dev"
   os_type             = "Linux"
   resource_group_name = azurerm_resource_group.dev.name
 
   container {
-    name   = "api-dev-modpims-sandbox"
-    image  = "containerregistrydevmodpimssandbox.azurecr.io/sandbox:latest"
+    name   = "api-arproject-dev"
+    image  = "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
     cpu    = "0.5"
     memory = "1.5"
 
@@ -236,4 +234,3 @@ resource "azurerm_container_group" "dev" {
 
   tags = var.tags
 }
-*/
