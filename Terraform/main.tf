@@ -202,6 +202,7 @@ resource "azurerm_container_registry" "dev" {
   tags = var.tags
 }
 
+/*
 # =====================================================================
 # ARProject Azure Container Group / Container Instance (ACI)
 # =====================================================================
@@ -230,6 +231,66 @@ resource "azurerm_container_group" "dev" {
       port     = 80
       protocol = "TCP"
     }
+  }
+
+  tags = var.tags
+}
+*/
+
+# =====================================================================
+# ARProject Azure App Service Plan (Linux)
+# =====================================================================
+resource "azurerm_app_service_plan" "dev" {
+  kind                = "Linux"
+  location            = var.location
+  name                = "appplan-arproject-dev"
+  reserved            = true
+  resource_group_name = azurerm_resource_group.dev.name
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
+  tags                = var.tags
+}
+
+# =====================================================================
+# ARProject Azure App Service (API)
+# Deploys from the Shared Container Registry
+# =====================================================================
+resource "azurerm_app_service" "dev" {
+  app_service_plan_id = azurerm_app_service_plan.dev.id
+  enabled             = true
+  #https_only         = true
+  location            = var.location
+  name                = "app-arproject-api"
+  resource_group_name = azurerm_resource_group.dev.name
+
+  app_settings = {
+    "ASPNETCORE_ENVIRONMENT"              = "dev",
+    "DOCKER_ENABLE_CI"                    = "true",
+    "DOCKER_REGISTRY_SERVER_PASSWORD"     = azurerm_key_vault_secret.container_passwd.value,
+    "DOCKER_REGISTRY_SERVER_URL"          = "https://containerregistryarprojectdev.azurecr.io",
+    "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_key_vault_secret.container_userid.value,
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
+  }
+
+  site_config {
+    always_on                 = false
+    default_documents         = []
+    dotnet_framework_version  = "v4.0"
+    ftps_state                = "Disabled"
+    health_check_path         = ""
+    http2_enabled             = false
+    ip_restriction            = []
+    linux_fx_version          = "DOCKER|containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
+    managed_pipeline_mode     = "Integrated"
+    min_tls_version           = "1.2"
+    number_of_workers         = 1
+	  remote_debugging_enabled  = false
+	  remote_debugging_version  = "VS2019"
+    use_32_bit_worker_process = true
+    websockets_enabled        = false
+    windows_fx_version        = ""
   }
 
   tags = var.tags
