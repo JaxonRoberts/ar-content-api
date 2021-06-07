@@ -7,33 +7,47 @@ on:
     branches: [ main ]
 
 stages:
-
-- stage: CI
-  runs-on: ubuntu-latest
-
+- stage: A
+  condition: false
   jobs:
-  - job: Build
+  - job: A1
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET 3.1
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x
-    - name: Restore Dependencies
-      run: dotnet restore
-      working-directory: ./ARProject/ARProject-API
-    - name: Build API Project
-      run: dotnet build ARProject-API.csproj --no-restore
-      working-directory: ./ARProject/ARProject-API
-    - name: Run API Tests
-      run: dotnet test --no-build --verbosity normal
-      working-directory: ./ARProject/ARProject-API
-    - name: Docker build
-      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
-    - name: Docker login
-      run: docker login containerregistryarprojectdev.azurecr.io -u containerregistryarprojectdev -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
-    - name: Docker push
-      run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
+    - script: echo Job A1
+- stage: B
+  condition: in(dependencies.A.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
+  jobs:
+  - job: B1
+    steps:
+    - script: echo Job B1
+
+#stages:
+
+#- stage: CI
+  #runs-on: ubuntu-latest
+
+  #jobs:
+  #- job: Build
+    #steps:
+    #- uses: actions/checkout@v2
+    #- name: Setup .NET 3.1
+      #uses: actions/setup-dotnet@v1
+      #with:
+        #dotnet-version: 3.1.x
+    #- name: Restore Dependencies
+      #run: dotnet restore
+      #working-directory: ./ARProject/ARProject-API
+    #- name: Build API Project
+      #run: dotnet build ARProject-API.csproj --no-restore
+      #working-directory: ./ARProject/ARProject-API
+    #- name: Run API Tests
+      #run: dotnet test --no-build --verbosity normal
+      #working-directory: ./ARProject/ARProject-API
+    #- name: Docker build
+      #run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
+    #- name: Docker login
+      #run: docker login containerregistryarprojectdev.azurecr.io -u containerregistryarprojectdev -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
+    #- name: Docker push
+      #run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
 
 #- stage: CD
   #dependsOn: CI
