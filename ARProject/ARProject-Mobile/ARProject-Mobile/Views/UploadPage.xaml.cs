@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ARProject-Mobile.Views
+namespace ARProject_Mobile.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class UploadPage : ContentPage
+    public partial class UploadPage : ContentPage
 {
-    public UploadPage()
-    {
-        InitializeComponent();
+        public UploadPage()
+        {
+            InitializeComponent();
+        }
     }
-}
 }

@@ -31,8 +31,8 @@
 
     <TabBar>
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
-    </TabBar>
+        <ShellContent Title="Upload" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:UploadPage}" />
+  </TabBar>
 
     <!--
         If you would like to navigate to this content you can do so by calling
