@@ -19,11 +19,6 @@ jobs:
     - name: Restore Dependencies
       run: dotnet restore
       working-directory: ./ARProject/ARProject-API
-
-  api:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
     - name: Build API Project
       run: dotnet build ARProject-API.csproj --no-restore
       working-directory: ./ARProject/ARProject-API
@@ -32,7 +27,7 @@ jobs:
       working-directory: ./ARProject/ARProject-API
 
   docker:
-    needs: [build, api]
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Docker build
