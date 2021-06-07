@@ -8,7 +8,9 @@ on:
 
 jobs:
   build:
-  runs-on: ubuntu-latest
+
+    runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET 3.1
@@ -28,5 +30,5 @@ jobs:
       run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
     - name: Docker login
       run: docker login containerregistryarprojectdev.azurecr.io -u containerregistryarprojectdev -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
-    #- name: Docker push
-      #run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
+    - name: Docker push
+      run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
