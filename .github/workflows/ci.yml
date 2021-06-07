@@ -25,13 +25,15 @@ jobs:
     - name: Run API Tests
       run: dotnet test --no-build --verbosity normal
       working-directory: ./ARProject/ARProject-API
+    - name: Docker build
+      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
 
   docker:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Docker build
-      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
+    #- name: Docker build
+      #run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
     - name: Docker login
       run: docker login containerregistryarprojectdev.azurecr.io -u containerregistryarprojectdev -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
     - name: Docker push
