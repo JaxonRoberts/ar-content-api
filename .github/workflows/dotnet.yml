@@ -6,10 +6,13 @@ on:
   pull_request:
     branches: [ main ]
 
+pool:
+  vmImage: 'ubuntu-latest'
+
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
