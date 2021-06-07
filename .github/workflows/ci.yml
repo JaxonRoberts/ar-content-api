@@ -1,4 +1,4 @@
-name: .NET Jobs
+name: .NET CI
 
 on:
   push:
