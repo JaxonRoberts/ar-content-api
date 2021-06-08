@@ -15,26 +15,26 @@ jobs:
       run: |
         echo ${{ secrets.DOCKER_USER }}
 
-    #steps:
-    #- uses: actions/checkout@v2
-    #- name: Setup .NET 3.1
-      #uses: actions/setup-dotnet@v1
-      #with:
-        #dotnet-version: 3.1.x
-    #- name: Restore Dependencies
-      #run: dotnet restore
-      #working-directory: ./ARProject/ARProject-API
-    #- name: Build API Project
-      #run: dotnet build ARProject-API.csproj --no-restore
-      #working-directory: ./ARProject/ARProject-API
-    #- name: Run API Tests
-      #run: dotnet test --no-build --verbosity normal
-      #working-directory: ./ARProject/ARProject-API
-    #- name: Docker build
-      #run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
-    #- name: Docker login
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET 3.1
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+    - name: Restore Dependencies
+      run: dotnet restore
+      working-directory: ./ARProject/ARProject-API
+    - name: Build API Project
+      run: dotnet build ARProject-API.csproj --no-restore
+      working-directory: ./ARProject/ARProject-API
+    - name: Run API Tests
+      run: dotnet test --no-build --verbosity normal
+      working-directory: ./ARProject/ARProject-API
+    - name: Docker build
+      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
+    - name: Docker login
       #env:
         #docker_user: ${{ secrets.DOCKER_USER }}
-      #run: docker login containerregistryarprojectdev.azurecr.io -u "$docker_user" -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
-    #- name: Docker push
-      #run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
+      run: docker login containerregistryarprojectdev.azurecr.io -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+    - name: Docker push
+      run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
