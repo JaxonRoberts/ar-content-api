@@ -30,6 +30,7 @@ jobs:
     - name: Docker login
       #env:
         #docker_user: ${{ secrets.DOCKER_USER }}
-      run: docker login containerregistryarprojectdev.azurecr.io -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+      #run: docker login containerregistryarprojectdev.azurecr.io -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+      run: docker login containerregistryarprojectdev.azurecr.io -u ${{ secrets.DOCKER_USER }} --password-stdin < ${{ secrets.DOCKER_PASS }}
     - name: Docker push
       run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
