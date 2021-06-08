@@ -29,6 +29,8 @@ jobs:
     - name: Docker build
       run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
     - name: Docker login
-      run: docker login containerregistryarprojectdev.azurecr.io -u containerregistryarprojectdev -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
+      with: # Set the secret as an input
+        docker_user: ${{ secrets.DOCKER_USER }}
+      run: docker login containerregistryarprojectdev.azurecr.io -u "$docker_user" -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
     - name: Docker push
       run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
