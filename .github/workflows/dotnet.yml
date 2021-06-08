@@ -17,6 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
+        docker_user: ${{ secrets.DOCKER_USER }}
     - name: Restore Dependencies
       run: dotnet restore
       working-directory: ./ARProject/ARProject-API
@@ -29,8 +30,6 @@ jobs:
     - name: Docker build
       run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
     - name: Docker login
-      with: # Set the secret as an input
-        docker_user: ${{ secrets.DOCKER_USER }}
-        run: docker login containerregistryarprojectdev.azurecr.io -u "$docker_user" -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
+      run: docker login containerregistryarprojectdev.azurecr.io -u "$docker_user" -p HtOfxWxof96dPkWFchuGpa/5E79O7XUM
     - name: Docker push
       run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
