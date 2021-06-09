@@ -31,3 +31,5 @@ jobs:
       run: docker login containerregistryarprojectdev.azurecr.io -u ${{ secrets.DOCKER_USER }} -p erqsVzH7A58n/Es10QAuDc2TBfnA5H8L
     - name: Docker push
       run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
+    - name: Docker logout
+      run: docker logout
