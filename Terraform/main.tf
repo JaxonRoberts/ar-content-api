@@ -247,8 +247,8 @@ resource "azurerm_app_service_plan" "dev" {
   reserved            = true
   resource_group_name = azurerm_resource_group.dev.name
   sku {
-    tier = "PremiumV2"
-    size = "P1v2"
+    size = "B1"
+    tier = "Basic"
   }
   tags                = var.tags
 }

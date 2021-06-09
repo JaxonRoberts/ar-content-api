@@ -25,11 +25,13 @@ jobs:
     - name: Run API Tests
       run: dotnet test --no-build --verbosity normal
       working-directory: ./ARProject/ARProject-API
-    - name: Docker build
-      run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
-    - name: Docker login
-      run: docker login containerregistryarprojectdev.azurecr.io -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
-    - name: Docker push
-      run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
-    - name: Docker logout
-      run: docker logout
+    #- name: Docker build
+      #run: docker build -f "./ARProject/ARProject-API/Dockerfile" --force-rm -t "containerregistryarprojectdev.azurecr.io/arprojectapi:latest" --target base "./ARProject"
+    #- name: Docker login
+      #run: docker login containerregistryarprojectdev.azurecr.io -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+    #- name: Docker push
+      #run: docker push "containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
+    #- name: Docker logout
+      #run: docker logout
+
+## CJP TODO.  The Docker publish is corrupting the Docker image
