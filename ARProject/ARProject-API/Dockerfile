@@ -2,9 +2,8 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-ENV LISTEN_PORT=8000
-EXPOSE 8000
-EXPOSE 443
+EXPOSE 80
+#EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
