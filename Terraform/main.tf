@@ -253,6 +253,7 @@ resource "azurerm_app_service_plan" "dev" {
   tags                = var.tags
 }
 
+/*
 # =====================================================================
 # ARProject Azure App Service (API)
 # Deploys from the Shared Container Registry
@@ -270,6 +271,7 @@ resource "azurerm_app_service" "dev" {
     "DOCKER_REGISTRY_SERVER_PASSWORD"     = azurerm_key_vault_secret.container_passwd.value,
     "DOCKER_REGISTRY_SERVER_URL"          = "https://containerregistryarprojectdev.azurecr.io",
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_key_vault_secret.container_userid.value,
+    "WEBSITES_CONTAINER_START_TIME_LIMIT" = "1800",
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
   }
 
@@ -294,3 +296,4 @@ resource "azurerm_app_service" "dev" {
 
   tags = var.tags
 }
+*/
