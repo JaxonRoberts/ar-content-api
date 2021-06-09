@@ -63,7 +63,7 @@ namespace ARProject_API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok("FileUploadController: Get operation success");
+            return Ok("FileUploadController: Get operation SUCCESS");
         }
 
     }

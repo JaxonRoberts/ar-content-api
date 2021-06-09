@@ -270,7 +270,6 @@ resource "azurerm_app_service" "dev" {
     "DOCKER_REGISTRY_SERVER_PASSWORD"     = azurerm_key_vault_secret.container_passwd.value,
     "DOCKER_REGISTRY_SERVER_URL"          = "https://containerregistryarprojectdev.azurecr.io",
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_key_vault_secret.container_userid.value,
-    "PORT"                                = "80",
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
   }
 
