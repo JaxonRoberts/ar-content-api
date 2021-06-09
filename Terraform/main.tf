@@ -247,13 +247,12 @@ resource "azurerm_app_service_plan" "dev" {
   reserved            = true
   resource_group_name = azurerm_resource_group.dev.name
   sku {
-    tier = "Basic"
-    size = "B1"
+    tier = "PremiumV2"
+    size = "P1v2"
   }
   tags                = var.tags
 }
 
-/*
 # =====================================================================
 # ARProject Azure App Service (API)
 # Deploys from the Shared Container Registry
@@ -271,15 +270,16 @@ resource "azurerm_app_service" "dev" {
     "DOCKER_REGISTRY_SERVER_PASSWORD"     = azurerm_key_vault_secret.container_passwd.value,
     "DOCKER_REGISTRY_SERVER_URL"          = "https://containerregistryarprojectdev.azurecr.io",
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_key_vault_secret.container_userid.value,
-    "WEBSITES_CONTAINER_START_TIME_LIMIT" = "1800",
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
   }
 
   site_config {
     always_on                 = false
-    default_documents         = []
+    app_command_line          = ""
+    auto_swap_slot_name       = ""
+    default_documents         = ["index.html"]
     dotnet_framework_version  = "v4.0"
-    ftps_state                = "Disabled"
+    ftps_state                = "AllAllowed"
     health_check_path         = ""
     http2_enabled             = false
     ip_restriction            = []
@@ -296,4 +296,43 @@ resource "azurerm_app_service" "dev" {
 
   tags = var.tags
 }
-*/
+
+resource "azurerm_app_service" "ar2" {
+  app_service_plan_id = azurerm_app_service_plan.dev.id
+  enabled             = true
+  #https_only         = true
+  location            = var.location
+  name                = "ar2"
+  resource_group_name = azurerm_resource_group.dev.name
+
+  app_settings = {
+    "DOCKER_ENABLE_CI"                    = "true",
+    "DOCKER_REGISTRY_SERVER_PASSWORD"     = azurerm_key_vault_secret.container_passwd.value,
+    "DOCKER_REGISTRY_SERVER_URL"          = "https://containerregistryarprojectdev.azurecr.io",
+    "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_key_vault_secret.container_userid.value,
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
+  }
+
+  site_config {
+    always_on                 = false
+    app_command_line          = ""
+    auto_swap_slot_name       = ""
+    default_documents         = ["index.html"]
+    dotnet_framework_version  = "v4.0"
+    ftps_state                = "AllAllowed"
+    health_check_path         = ""
+    http2_enabled             = false
+    ip_restriction            = []
+    linux_fx_version          = "DOCKER|containerregistryarprojectdev.azurecr.io/arprojectapi:latest"
+    managed_pipeline_mode     = "Integrated"
+    min_tls_version           = "1.2"
+    number_of_workers         = 1
+	  remote_debugging_enabled  = false
+	  remote_debugging_version  = "VS2019"
+    use_32_bit_worker_process = true
+    websockets_enabled        = false
+    windows_fx_version        = ""
+  }
+
+  tags = var.tags
+}

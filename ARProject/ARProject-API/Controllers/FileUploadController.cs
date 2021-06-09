@@ -63,7 +63,9 @@ namespace ARProject_API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok("FileUploadController: Get operation Success");
+            var currentDate = DateTime.Now.ToLongDateString();
+            var currentTime = DateTime.Now.ToLocalTime();
+            return Ok($"FileUploadController: Get operation Success - {currentDate} - {currentTime}");
         }
 
     }
