@@ -266,11 +266,11 @@ resource "azurerm_app_service" "dev" {
   resource_group_name = azurerm_resource_group.dev.name
 
   app_settings = {
-    "ASPNETCORE_ENVIRONMENT"              = "dev",
     "DOCKER_ENABLE_CI"                    = "true",
     "DOCKER_REGISTRY_SERVER_PASSWORD"     = azurerm_key_vault_secret.container_passwd.value,
     "DOCKER_REGISTRY_SERVER_URL"          = "https://containerregistryarprojectdev.azurecr.io",
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_key_vault_secret.container_userid.value,
+    "PORT"                                = "80",
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
   }
 

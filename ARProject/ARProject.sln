@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARProject-Mobile.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARProject-Mobile.iOS", "ARProject-Mobile\ARProject-Mobile.iOS\ARProject-Mobile.iOS.csproj", "{FCD89665-B7FD-45A9-BFC2-620DB2424EB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARProject-Mobile", "ARProject-Mobile\ARProject-Mobile\ARProject-Mobile.csproj", "{0F5F7ECB-931C-492E-B3C1-A600067355CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARProject-Mobile", "ARProject-Mobile\ARProject-Mobile\ARProject-Mobile.csproj", "{0F5F7ECB-931C-492E-B3C1-A600067355CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
