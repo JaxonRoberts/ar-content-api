@@ -4,5 +4,6 @@
     <ActiveDebugProfile>Docker</ActiveDebugProfile>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Controller</Controller_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>C:\Source\Repos\AR\ar-content-api\ARProject\ARProject-API\Properties\PublishProfiles\containerregistryarprojectdev.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
