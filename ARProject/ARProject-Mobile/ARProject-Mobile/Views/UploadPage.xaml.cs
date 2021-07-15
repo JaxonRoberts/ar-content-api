@@ -28,9 +28,10 @@ namespace ARProject_Mobile.Views
             var content = new MultipartFormDataContent();
             content.Add(new StreamContent(await file.OpenReadAsync()), "file", file.FileName);
 
-            var httpClient = new HttpClient();
-            var response = await httpClient.PostAsync("", content);
-
+            var httpClient = new HttpClient(); //http://10.0.2.2:5000/UploadFile
+            var response = await httpClient.PostAsync("https://arprojecttest.azurewebsites.net/api/fileupload", content);
+            //https://localhost:49153/api/fileupload
+            //var response = await httpClient.PostAsync("https://arprojecttest.azurewebsites.net/api/fileupload", content);
             StatusLabel.Text = response.StatusCode.ToString();
         }
     }
